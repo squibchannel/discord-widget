@@ -10,17 +10,14 @@ This project provides a simple Discord widget that displays the number of online
 
 ## How to Embed in an iframe
 
-To embed this widget in your website using an iframe, follow these steps:
+_Use the following HTML code to embed the widget in your website:_
 
-1. Deploy the widget to a hosting service (e.g., GitHub Pages).
-2. Use the following HTML code to embed the widget in your website:
-
-   ```html
-   <iframe
-     src="https://squibchannel.github.io/discord-widget/"
-     width="320"
-     height="200"
-     style="border: none;"
-     title="Discord Widget"
-   ></iframe>
-   ```
+```html
+<iframe
+  src="https://squibchannel.github.io/discord-widget/"
+  width="320"
+  height="200"
+  style="border: none;"
+  title="Discord Widget"
+></iframe>
+```
