@@ -1,6 +1,6 @@
 # Discord Widget
 
-This project provides a simple Discord widget that displays the number of online members in a Discord server and a link to join the server. It is designed to be embedded in other websites using an iframe.
+This project provides a simple Discord widget that displays the number of online members in the squib_channel Discord server and a link to join the server. It is designed to be embedded in other websites using an iframe.
 
 ## Features
 
