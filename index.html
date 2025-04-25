@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discord Widget</title>
+    <style>
+      :root {
+        --bg: #1e1f22;
+        --card: #2b2d31;
+        --accent: #5865f2;
+        --text: #ffffff;
+        --subtle: #b9bbbe;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #discord-widget {
+        background-color: var(--card);
+        color: var(--text);
+        border-radius: 16px;
+        padding: 24px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      #discord-widget img {
+        width: 96px;
+        height: 96px;
+        object-fit: cover;
+        margin-bottom: 8px;
+        scale: 0.8;
+      }
+
+      #discord-widget h2 {
+        font-size: 1.3rem;
+        margin: 8px 0 4px;
+        color: var(--accent);
+      }
+
+      #discord-widget p {
+        margin: 4px 0;
+        color: var(--subtle);
+      }
+
+      #discord-widget a {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      #discord-widget a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="discord-widget">
+      <p>Loading Discord Widget...</p>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const GUILD_ID = params.get("guildId") || "1207449560646029382"; // Default to your server ID
+      const IMAGE_PATH = params.get("imagePath") || "./sticker_icon.png";
+      const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 minutes in ms
+
+      async function updateWidget() {
+        const container = document.getElementById("discord-widget");
+
+        try {
+          const res = await fetch(
+            `https://discord.com/api/guilds/${GUILD_ID}/widget.json`
+          );
+          const data = await res.json();
+          const onlineCount = data.members.length;
+          const inviteUrl = data.instant_invite || "https://discord.com";
+
+          container.innerHTML = `
+            <img src="${IMAGE_PATH}" alt="Discord Server Icon" id="squib-image" />
+            <h2>squib_channel</h2>
+            <p><strong>Online Members:</strong> ${onlineCount}</p>
+            <a href="${inviteUrl}" target="_blank">Join the server</a>
+          `;
+        } catch (err) {
+          container.innerHTML = `<p>Could not load Discord info.</p>`;
+          console.error("Widget fetch failed:", err);
+        }
+      }
+
+      updateWidget();
+      setInterval(updateWidget, REFRESH_INTERVAL);
+    </script>
+  </body>
+</html>
