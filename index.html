@@ -73,9 +73,9 @@
 
     <script>
       const params = new URLSearchParams(window.location.search);
-      const GUILD_ID = params.get("guildId") || "1207449560646029382"; // Default to your server ID
-      const IMAGE_PATH = params.get("imagePath") || "./sticker_icon.png";
-      const REFRESH_INTERVAL = 15 * 60 * 1000; // 15 minutes in ms
+      const GUILD_ID = "1207449560646029382";
+      const IMAGE_PATH = "./sticker_icon.png";
+      const REFRESH_INTERVAL = 15 * 60 * 1000;
 
       async function updateWidget() {
         const container = document.getElementById("discord-widget");
