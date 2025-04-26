@@ -19,6 +19,7 @@ _Use the following HTML code to embed the widget in your website:_
   height="255"
   style="border: none; border-radius: 12px;" // throw in whatever styles you want
   title="Squib Discord Widget"
+   sandbox="allow-scripts allow-same-origin allow-popups"
 ></iframe>
 ```
 
